@@ -10,7 +10,7 @@ def ler_entradas(nome_arquivo):
             weights.append(weight)
         return n, w, weights
 
-n,w, costs = ler_entradas('entradas/402_10000_DI_18.txt')
+n,w, costs = ler_entradas('entradas/N1W1B1R0.txt')
 
 model = pulp.LpProblem("BinPacking", pulp.LpMinimize)
 
@@ -23,12 +23,8 @@ model += pulp.lpSum(y[i] for i in range(n))
 for i in range(n):
         model += pulp.lpSum(x[i, j] for j in range(n)) == 1
 
-for i in range(n):
-    model += pulp.lpSum(costs[i] * x[i, j] for j in range(n)) <= w*y[i]
-
-for i in range(n):
-    for j in range(n):
-        model += pulp.lpSum(x[i, j]) <= y[i]
+for j in range(n):
+    model += pulp.lpSum(costs[i] * x[i, j] for i in range(n)) <= w*y[j]
 
 
 model.solve()
