@@ -129,7 +129,7 @@ def simulated_annealing(initial_solution, max_weight, max_iterations, initial_te
         current_cost = cost(current_solution)
 
         # Atualiza a melhor solução
-        if current_cost < best_cost and valid_solution(current_solution, max_weight):
+        if current_cost < best_cost:
             best_solution = copy.deepcopy(current_solution)
             best_cost = current_cost
 
