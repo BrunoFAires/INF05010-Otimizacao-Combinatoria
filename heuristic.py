@@ -31,7 +31,7 @@ def read_input(file_name):
             weights.append(weight)
         return n, capaity, weights
     
-n, capacity, weights = read_input('entradas/BPP_100_150_0.1_0.7_0.txt')
+n, capacity, weights = read_input('entradas/N1W1B1R0.txt')
 
 def swap_items(bins):
     current_bins = remove_empty_sub_lists(copy.deepcopy(bins))
@@ -54,6 +54,7 @@ def swap_item(bins):
     current_bins = copy.deepcopy(bins)
 
     origin_sublist = random.choice(current_bins)
+    destination_sublist = random.choice(current_bins)
     
     if not origin_sublist:
         return current_bins 
@@ -61,8 +62,6 @@ def swap_item(bins):
     element_index = random.randint(0, len(origin_sublist)-1)
 
     element = origin_sublist.pop(element_index)
-
-    destination_sublist = random.choice(current_bins)
 
     destination_sublist.append(element)
 
@@ -92,7 +91,7 @@ def metropolis_algorithm(current_solution, max_weight, initial_temperature, temp
     for _ in range(max_iterations):
         new_solution = copy.deepcopy(b)
 
-        if((temperature/initial_temperature) < 0.40):
+        if((temperature/initial_temperature) < 0.1):
             new_solution = swap_items(new_solution)
         else:
             new_solution = swap_item(new_solution)
@@ -102,10 +101,9 @@ def metropolis_algorithm(current_solution, max_weight, initial_temperature, temp
         new_cost = cost(new_solution)  if valid_solution(new_solution, max_weight) else cost(new_solution) + 1000
 
         cost_difference = new_cost - current_cost
-        a = random.random()
         
 
-        if ((cost_difference < 0) == True or (a < math.exp(-cost_difference / temperature)) == True):
+        if ((cost_difference < 0) == True or (math.exp(-cost_difference / temperature)) == True):
             b.clear()
             b = [row[:] for row in new_solution]
         
@@ -143,8 +141,8 @@ bins = first_fit_decreasing(capacity, weights)
 
 max_iterations = 1000
 
-initial_temperature = 1000.0 
-cooling_rate = 0.95
+initial_temperature = 1500.0 
+cooling_rate = 0.90
 
 print(bins)
 print(cost(bins))
