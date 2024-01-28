@@ -27,12 +27,13 @@ def ler_entradas(nome_arquivo):
             weights.append(weight)
         return n, w, weights
     
-if len(sys.argv) < 2:
-    print("Por favor, o nome do arquivo")
+if len(sys.argv) < 3:
+    print("Por favor, informe o nome do arquivo e o path do solver HiGHS")
     sys.exit(1)
 
 filename = sys.argv[1]
-hours = int(sys.argv[2]) if len(sys.argv) > 2 else 1
+highsPath = sys.argv[2]
+hours = int(sys.argv[3]) if len(sys.argv) > 3 else 1
 
 n,w, costs = ler_entradas(f'entradas/{filename}')
 model = LpProblem("BinPacking", LpMinimize)
@@ -55,4 +56,4 @@ for j in range(binUpperBound):
 for i in range(1, binUpperBound-1):
     model += y[i+1] <= y[i]
 
-model.solve(HiGHS_CMD(timeLimit=3600*hours, logPath=f"Saídas/Solver/{filename}", path="../HiGHS/build/bin/highs"))
+model.solve(HiGHS_CMD(timeLimit=3600*hours, logPath=f"Saídas/Solver/{filename}", path=highsPath))
