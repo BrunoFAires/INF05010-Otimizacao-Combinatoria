@@ -1,0 +1,73 @@
+Running HiGHS 1.6.0: Copyright (c) 2023 HiGHS under MIT licence terms
+Number of BV entries in BOUNDS section is 333999
+MIP  463a3cd8f18941f9b083e8eb5771f223-pulp has 1666 rows; 333999 cols; 668327 nonzeros; 333999 integer variables
+Presolving model
+1666 rows, 333999 cols, 668327 nonzeros
+1666 rows, 333999 cols, 668327 nonzeros
+Objective function is integral with scale 1
+
+Solving MIP model with:
+   1666 rows
+   333999 cols (333999 binary, 0 integer, 0 implied int., 0 continuous)
+   668327 nonzeros
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+     Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+         0       0         0   0.00%   0               inf                  inf        0      0      0         0    16.1s
+         0       0         0   0.00%   332             inf                  inf        0      0      3      3420    24.7s
+         0       0         0   0.00%   332             inf                  inf     1057    270      7      5215    33.7s
+         0       0         0   0.00%   332             inf                  inf     2209    511     11      6900    43.9s
+         0       0         0   0.00%   332             inf                  inf     3158    728     15      8181    52.6s
+         0       0         0   0.00%   332             inf                  inf     3877    891     22      8971    58.6s
+         0       0         0   0.00%   332             inf                  inf     4587   1070     34      9881    65.8s
+         0       0         0   0.00%   332             inf                  inf     5280   1227     38     10687    72.0s
+         0       0         0   0.00%   332             inf                  inf     5893   1331     44     11361    77.5s
+         0       0         0   0.00%   332             inf                  inf     6542   1460     50     12152    84.0s
+         0       0         0   0.00%   332             inf                  inf     7191   1578     55     12815    89.6s
+         0       0         0   0.00%   332             inf                  inf     8249   2012     61     14948   107.3s
+         0       0         0   0.00%   332             inf                  inf     9012   2333     63     16445   119.5s
+         0       0         0   0.00%   332             inf                  inf     9795   2649     67     18006   132.8s
+         0       0         0   0.00%   332             inf                  inf    10627   2948     70     19262   143.6s
+         0       0         0   0.00%   332             inf                  inf    11478   2808     74     20915   157.8s
+         0       0         0   0.00%   332             inf                  inf    12222   3099     78     22272   170.2s
+         0       0         0   0.00%   332             inf                  inf    12924   3386     85     23662   182.8s
+         0       0         0   0.00%   332             inf                  inf    12924   1226    223    567011  2928.3s
+
+Symmetry detection completed in 4.9s
+Found 59 full orbitope(s) acting on 46953 columns
+
+       206     205         1   0.00%   332             inf                  inf    10882   1226    223    582399  3049.3s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+     Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+       265     205         2   0.00%   332             inf                  inf    11843   1558    223    592313  3116.4s
+       385     378         4   0.00%   332             inf                  inf    11843   1558    223    599927  3170.6s
+       459     377         5   0.00%   332             inf                  inf    11555   1881    223    607565  3226.2s
+       474     377         6   0.00%   332             inf                  inf    11555   1881    223    608588  3233.4s
+       489     476         7   0.00%   332             inf                  inf    11555   1881    224    609384  3241.8s
+       492     476         8   0.00%   332             inf                  inf    12336   1161    224    611065  3254.0s
+       507     480        12   0.00%   332             inf                  inf    12336   1161    224    611768  3259.8s
+       640     613        14   0.00%   332             inf                  inf    12336   1161    224    623337  3341.8s
+       815     786        15   0.00%   332             inf                  inf    10016   1479    224    638805  3459.9s
+       817     785        16   0.00%   332             inf                  inf    10884   1804    224    641173  3476.6s
+       932     899        17   0.00%   332             inf                  inf    10884   1804    224    651256  3556.7s
+       937     899        18   0.00%   332             inf                  inf    11825   2125    224    654344  3579.3s
+       955     915        21   0.00%   332             inf                  inf    11825   2125    224    656953  3600.4s
+
+Solving report
+  Status            Time limit reached
+  Primal bound      inf
+  Dual bound        332
+  Gap               inf
+  Solution status   -
+  Timing            3600.45 (total)
+                    8.92 (presolve)
+                    0.00 (postsolve)
+  Nodes             955
+  LP iterations     656953 (total)
+                    0 (strong br.)
+                    29704 (separation)
+                    543349 (heuristics)
+Writing the solution to /tmp/463a3cd8f18941f9b083e8eb5771f223-pulp.sol

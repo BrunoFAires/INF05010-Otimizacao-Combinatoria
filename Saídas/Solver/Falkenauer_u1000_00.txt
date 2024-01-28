@@ -1,0 +1,73 @@
+Running HiGHS 1.6.0: Copyright (c) 2023 HiGHS under MIT licence terms
+Number of BV entries in BOUNDS section is 403403
+MIP  534a4a5abbe74d2f8968e14257b4fe4d-pulp has 1804 rows; 403403 cols; 807205 nonzeros; 403403 integer variables
+Presolving model
+1804 rows, 403403 cols, 807205 nonzeros
+1804 rows, 403403 cols, 807205 nonzeros
+Objective function is integral with scale 1
+
+Solving MIP model with:
+   1804 rows
+   403403 cols (403403 binary, 0 integer, 0 implied int., 0 continuous)
+   807205 nonzeros
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+     Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+         0       0         0   0.00%   0               inf                  inf        0      0      0         0    21.4s
+         0       0         0   0.00%   398.4266667     inf                  inf        0      0      4      4705    40.0s
+         0       0         0   0.00%   398.4266667     inf                  inf     1101    317      7      6465    53.7s
+         0       0         0   0.00%   398.4266667     inf                  inf     2153    578     13      8701    72.0s
+         0       0         0   0.00%   398.4266667     inf                  inf     3217    852     16     10606    88.9s
+         0       0         0   0.00%   398.4266667     inf                  inf     4354   1123     20     12956   110.8s
+         0       0         0   0.00%   398.4266667     inf                  inf     5454   1369     34     15824   139.5s
+         0       0         0   0.00%   398.4266667     inf                  inf     6316   1575     39     17487   156.9s
+         0       0         0   0.00%   398.4266667     inf                  inf     7043   1748     43     18988   173.3s
+         0       0         0   0.00%   398.4266667     inf                  inf     7758   1890     47     20033   185.0s
+         0       0         0   0.00%   398.4266667     inf                  inf     8438   2009     51     21117   199.0s
+         0       0         0   0.00%   398.4266667     inf                  inf     9107   2140     53     22155   211.5s
+         0       0         0   0.00%   398.4266667     inf                  inf     9758   2256     55     23197   223.6s
+         0       0         0   0.00%   398.4266667     inf                  inf    10342   2666     57     25681   251.7s
+         0       0         0   0.00%   398.4266667     inf                  inf    11290   3042     59     28233   281.4s
+         0       0         0   0.00%   398.4266667     inf                  inf    12302   3426     62     30777   311.3s
+         0       0         0   0.00%   398.4266667     inf                  inf    13306   3105     66     34556   357.0s
+         0       0         0   0.00%   398.4266667     inf                  inf    13013   3474     70     38651   408.3s
+         0       0         0   0.00%   398.4266667     inf                  inf    14136   3840     74     61386   708.0s
+         0       0         0   0.00%   398.4266667     inf                  inf    13545   4253     80     65503   745.2s
+
+        Nodes      |    B&B Tree     |            Objective Bounds              |  Dynamic Constraints |       Work      
+     Proc. InQueue |  Leaves   Expl. | BestBound       BestSol              Gap |   Cuts   InLp Confl. | LpIters     Time
+
+         0       0         0   0.00%   398.4266667     inf                  inf    14635   4668     82     71284   797.9s
+         0       0         0   0.00%   398.4266667     inf                  inf    15750   4516     84     75792   841.1s
+         0       0         0   0.00%   398.4266667     inf                  inf    13615   4944     88     78445   869.4s
+         0       0         0   0.00%   398.4266667     inf                  inf    14678   5348     91     80964   897.6s
+         0       0         0   0.00%   398.4266667     inf                  inf    15713   5757    103     84472   935.7s
+         0       0         0   0.00%   398.4266667     inf                  inf    16829   6154    110     88174   977.4s
+         0       0         0   0.00%   398.4266667     inf                  inf    14831   5093    116     91857  1019.5s
+         0       0         0   0.00%   398.4266667     inf                  inf    15941   5468    120     96235  1069.0s
+         0       0         0   0.00%   398.4266667     inf                  inf    13378   5841    122     99284  1104.7s
+         0       0         0   0.00%   398.4266667     inf                  inf    14522   6222    124    106537  1186.7s
+         0       0         0   0.00%   398.4266667     inf                  inf    15749   6597    128    111859  1248.2s
+         0       0         0   0.00%   398.4266667     inf                  inf    16933   4630    132    117431  1313.0s
+         0       0         0   0.00%   398.4266667     inf                  inf    12681   5002    136    122187  1367.2s
+         0       0         0   0.00%   398.4266667     inf                  inf    13877   5364    140    124968  1401.2s
+         0       0         0   0.00%   398.4266667     inf                  inf    14950   5715    144    131838  1481.8s
+         0       0         0   0.00%   398.4266667     inf                  inf    16129   6088    150    163927  1880.6s
+         0       0         0   0.00%   398.4266667     inf                  inf    12677   4960    153    166823  1910.1s
+
+Solving report
+  Status            Time limit reached
+  Primal bound      inf
+  Dual bound        399
+  Gap               inf
+  Solution status   -
+  Timing            3600.07 (total)
+                    10.73 (presolve)
+                    0.00 (postsolve)
+  Nodes             0
+  LP iterations     412979 (total)
+                    0 (strong br.)
+                    162118 (separation)
+                    246156 (heuristics)
+Writing the solution to /tmp/534a4a5abbe74d2f8968e14257b4fe4d-pulp.sol

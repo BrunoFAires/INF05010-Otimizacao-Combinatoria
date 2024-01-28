@@ -2,6 +2,7 @@ import copy
 import random
 import math
 import time
+import sys
 
 def read_input(file_name):
     with open(file_name, 'r') as file:
@@ -122,40 +123,34 @@ def simulated_annealing(initial_solution, max_weight, max_iterations, initial_te
 
     return remove_empty_sub_lists(best_solution), best_cost
 
-filenames = ["N1W1B1R0.txt", "Hard28_BPP645.txt", "Falkenauer_u1000_00.txt", "Falkenauer_t60_00.txt", "BPP_500_300_0.2_0.8_6.txt", "BPP_100_150_0.1_0.7_0.txt", "402_10000_DI_18.txt"]
+if len(sys.argv) < 5:
+    print("Por favor, informe o máximo de iteraçoes, temperatura inicial, taxa de resfriamento e a semente de aleatoriedade.")
+    sys.exit(1)
 
-max_iterations = 1000
-initial_temperature = 1000.0 
-cooling_rate = 0.95
+
+max_iterations = int(sys.argv[1])
+initial_temperature = float(sys.argv[2])
+cooling_rate = float(sys.argv[3])
+filename = sys.argv[4]
 
 line = ""
 
-for filename in filenames:
-    for i in range(10):
-        random.seed(i)
-        line += f"Iteração: {i+1}\n"
-        init = time.perf_counter()
-        n, capacity, weights = read_input(f'entradas/{filename}')
+for i in range(1):
+    random.seed(i)
+    line += f"Iteração: {i+1}\n"
+    init = time.perf_counter()
+    n, capacity, weights = read_input(f'entradas/{filename}')
 
-        a = initial_solution(capacity, weights)
+    a = initial_solution(capacity, weights)
 
-        solution, best_cost = simulated_annealing(a, capacity,  max_iterations, initial_temperature, cooling_rate)
-        
-        """ print(initial_solution)
-        print(valid_solution(initial_solution, capacity))
-        print(cost(initial_solution)) """
+    solution, best_cost = simulated_annealing(a, capacity,  max_iterations, initial_temperature, cooling_rate)
+    
+    line += f"Custo solução inicial: {cost(a)}\nFactível: {valid_solution(a, capacity)}\n"
 
-        line += f"Custo solução inicial: {cost(a)}\nFactível: {valid_solution(a, capacity)}\n"
+    time_result = time.perf_counter() - init
 
+    line += f"Custo final: {best_cost}\nFactível: {valid_solution(solution, capacity)}\nTempo: {time_result}\n\n"
 
-        """ print(solution)
-        print(valid_solution(solution, capacity))
-        print(best_cost) """
-
-        time_result = time.perf_counter() - init
-
-        line += f"Custo final: {best_cost}\nFactível: {valid_solution(solution, capacity)}\nTempo: {time_result}\n\n"
-
-    with open(f"Saídas/1000-1000-0.95-{filename}", 'w') as arquivo:
-        arquivo.write(line)
-    line = ""
+with open(f"{max_iterations}-{initial_temperature}-{cooling_rate}-{filename}", 'w') as arquivo:
+    arquivo.write(line)
+line = ""

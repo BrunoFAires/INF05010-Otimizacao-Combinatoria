@@ -1,0 +1,70 @@
+Iteração: 1
+Custo solução inicial: 1002
+Factível: True
+Custo final: 395
+Factível: True
+Tempo: 134.07982172200354
+
+Iteração: 2
+Custo solução inicial: 1002
+Factível: True
+Custo final: 405
+Factível: True
+Tempo: 135.4851210809975
+
+Iteração: 3
+Custo solução inicial: 1002
+Factível: True
+Custo final: 394
+Factível: True
+Tempo: 134.1580467240019
+
+Iteração: 4
+Custo solução inicial: 1002
+Factível: True
+Custo final: 404
+Factível: True
+Tempo: 135.52279963000183
+
+Iteração: 5
+Custo solução inicial: 1002
+Factível: True
+Custo final: 406
+Factível: True
+Tempo: 135.9566945709994
+
+Iteração: 6
+Custo solução inicial: 1002
+Factível: True
+Custo final: 397
+Factível: True
+Tempo: 134.46471013500195
+
+Iteração: 7
+Custo solução inicial: 1002
+Factível: True
+Custo final: 402
+Factível: True
+Tempo: 135.48370159800106
+
+Iteração: 8
+Custo solução inicial: 1002
+Factível: True
+Custo final: 398
+Factível: True
+Tempo: 134.7391973259946
+
+Iteração: 9
+Custo solução inicial: 1002
+Factível: True
+Custo final: 405
+Factível: True
+Tempo: 135.65824403099396
+
+Iteração: 10
+Custo solução inicial: 1002
+Factível: True
+Custo final: 397
+Factível: True
+Tempo: 134.57058751700242
+
