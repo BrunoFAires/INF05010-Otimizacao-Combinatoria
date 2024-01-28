@@ -99,7 +99,6 @@ def metropolis_algorithm(current_solution, max_weight, initial_temperature, temp
 
 
 def simulated_annealing(initial_solution, max_weight, max_iterations, initial_temperature, cooling_rate):
-    init = time.perf_counter()
     current_solution = copy.deepcopy(initial_solution)
     current_cost = cost(initial_solution)
     best_solution = copy.deepcopy(current_solution)
@@ -121,26 +120,42 @@ def simulated_annealing(initial_solution, max_weight, max_iterations, initial_te
         #Diminui a temperatura
         temperature *= cooling_rate
 
-    result = time.perf_counter() - init
-    return remove_empty_sub_lists(best_solution), best_cost, result
+    return remove_empty_sub_lists(best_solution), best_cost
 
-n, capacity, weights = read_input('entradas/Hard28_BPP645.txt')
-
-initial_solution = initial_solution(capacity, weights)
-
+filenames = ["N1W1B1R0.txt", "Hard28_BPP645.txt", "Falkenauer_u1000_00.txt", "Falkenauer_t60_00.txt", "BPP_500_300_0.2_0.8_6.txt", "BPP_100_150_0.1_0.7_0.txt", "402_10000_DI_18.txt"]
 
 max_iterations = 1000
-initial_temperature = 1500.0 
+initial_temperature = 1000.0 
 cooling_rate = 0.95
 
-solution, best_cost, time = simulated_annealing(initial_solution, capacity,  max_iterations, initial_temperature, cooling_rate)
+line = ""
 
-print(initial_solution)
-print(valid_solution(initial_solution, capacity))
-print(cost(initial_solution))
+for filename in filenames:
+    for i in range(10):
+        random.seed(i)
+        line += f"Iteração: {i+1}\n"
+        init = time.perf_counter()
+        n, capacity, weights = read_input(f'entradas/{filename}')
 
-print(solution)
-print(valid_solution(solution, capacity))
-print(best_cost)
+        a = initial_solution(capacity, weights)
 
-print(time)
+        solution, best_cost = simulated_annealing(a, capacity,  max_iterations, initial_temperature, cooling_rate)
+        
+        """ print(initial_solution)
+        print(valid_solution(initial_solution, capacity))
+        print(cost(initial_solution)) """
+
+        line += f"Custo solução inicial: {cost(a)}\nFactível: {valid_solution(a, capacity)}\n"
+
+
+        """ print(solution)
+        print(valid_solution(solution, capacity))
+        print(best_cost) """
+
+        time_result = time.perf_counter() - init
+
+        line += f"Custo final: {best_cost}\nFactível: {valid_solution(solution, capacity)}\nTempo: {time_result}\n\n"
+
+    with open(f"Saídas/1000-1000-0.95-{filename}", 'w') as arquivo:
+        arquivo.write(line)
+    line = ""
