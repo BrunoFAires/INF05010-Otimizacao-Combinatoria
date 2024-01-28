@@ -135,7 +135,7 @@ filename = sys.argv[4]
 
 line = ""
 
-for i in range(1):
+for i in range(10):
     random.seed(i)
     line += f"Iteração: {i+1}\n"
     init = time.perf_counter()
