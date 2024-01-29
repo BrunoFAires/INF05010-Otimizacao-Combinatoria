@@ -75,9 +75,9 @@ def valid_solution(bins, max_weight):
     return True
 
 def metropolis_algorithm(current_solution, max_weight, initial_temperature, temperature, max_iterations):
-    b = copy.deepcopy(current_solution)
+    localBins = copy.deepcopy(current_solution)
     for _ in range(max_iterations):
-        new_solution = copy.deepcopy(b)
+        new_solution = copy.deepcopy(localBins)
 
         if((temperature/initial_temperature) < 0.1):
             new_solution = swap_items(new_solution)
@@ -85,18 +85,18 @@ def metropolis_algorithm(current_solution, max_weight, initial_temperature, temp
             new_solution = swap_item(new_solution)
         
         
-        current_cost = cost(b)
+        current_cost = cost(localBins)
         new_cost = cost(new_solution)  if valid_solution(new_solution, max_weight) else cost(new_solution) + 1000
 
         cost_difference = new_cost - current_cost
         
 
         if ((cost_difference < 0) == True or (math.exp(-cost_difference / temperature)) == True):
-            b.clear()
-            b = [row[:] for row in new_solution]
+            localBins.clear()
+            localBins = [row[:] for row in new_solution]
         
         
-    return b
+    return localBins
 
 
 def simulated_annealing(initial_solution, max_weight, max_iterations, initial_temperature, cooling_rate):

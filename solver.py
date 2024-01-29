@@ -47,13 +47,19 @@ x = LpVariable.dicts("x", [(i, j) for i in range(n) for j in range(binUpperBound
 model += lpSum(y[i] for i in range(binUpperBound))
 
 
+#Um item só pode estar contido em uma caixa
 for i in range(n):
-        model += lpSum(x[i, j] for j in range(binUpperBound)) == 1
+    model += lpSum(x[i, j] for j in range(binUpperBound)) == 1
+    for j in range(binUpperBound):
+        model += x[i, j] <= y[j]  #Otimização. Um item só pode ser considerado num pacote caso ele tenha sido utilizado.
 
+#A soma dos pesos dos pacotes de uma caixa não devem ultrapassar a capacidade da caixa.
 for j in range(binUpperBound):
     model += lpSum(costs[i] * x[i, j] for i in range(n)) <= w*y[j]
 
+#Os pacotes são selecionados contiguamente
 for i in range(1, binUpperBound-1):
     model += y[i+1] <= y[i]
+
 
 model.solve(HiGHS_CMD(timeLimit=3600*hours, logPath=f"Saídas/Solver/{filename}", path=highsPath))
