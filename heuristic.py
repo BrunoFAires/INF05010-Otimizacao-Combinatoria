@@ -123,8 +123,8 @@ def simulated_annealing(initial_solution, max_weight, max_iterations, initial_te
 
     return remove_empty_sub_lists(best_solution), best_cost
 
-if len(sys.argv) < 5:
-    print("Por favor, informe o máximo de iteraçoes, temperatura inicial, taxa de resfriamento e a semente de aleatoriedade.")
+if len(sys.argv) < 6:
+    print("Por favor, informe o máximo de iteraçoes, temperatura inicial, taxa de resfriamento, nome do instância e a semente de aleatoriedade.")
     sys.exit(1)
 
 
@@ -132,25 +132,25 @@ max_iterations = int(sys.argv[1])
 initial_temperature = float(sys.argv[2])
 cooling_rate = float(sys.argv[3])
 filename = sys.argv[4]
+seed  = int(sys.argv[5])
 
 line = ""
 
-for i in range(10):
-    random.seed(i)
-    line += f"Iteração: {i+1}\n"
-    init = time.perf_counter()
-    n, capacity, weights = read_input(f'entradas/{filename}')
+random.seed(seed)
+init = time.perf_counter()
+n, capacity, weights = read_input(f'entradas/{filename}')
 
-    a = initial_solution(capacity, weights)
+a = initial_solution(capacity, weights)
 
-    solution, best_cost = simulated_annealing(a, capacity,  max_iterations, initial_temperature, cooling_rate)
-    
-    line += f"Custo solução inicial: {cost(a)}\nFactível: {valid_solution(a, capacity)}\n"
+solution, best_cost = simulated_annealing(a, capacity,  max_iterations, initial_temperature, cooling_rate)
 
-    time_result = time.perf_counter() - init
+line += f"Custo solução inicial: {cost(a)}\nFactível: {valid_solution(a, capacity)}\n"
 
-    line += f"Custo final: {best_cost}\nFactível: {valid_solution(solution, capacity)}\nTempo: {time_result}\n\n"
+time_result = time.perf_counter() - init
 
-with open(f"{max_iterations}-{initial_temperature}-{cooling_rate}-{filename}", 'w') as arquivo:
+line += f"Custo final: {best_cost}\nFactível: {valid_solution(solution, capacity)}\nTempo: {time_result}\n\n"
+
+print(line)
+with open(f"Saídas/heuristica/{max_iterations}-{initial_temperature}-{cooling_rate}-{filename}", 'w') as arquivo:
     arquivo.write(line)
 line = ""
